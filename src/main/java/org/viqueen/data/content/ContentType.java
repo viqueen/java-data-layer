@@ -10,16 +10,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import java.util.Collection;
 import java.util.Date;
 
 @Setter
 @Getter
 @Entity
-public class Content implements Timestamped, SoftRemoved {
-
+public class ContentType implements Timestamped, SoftRemoved {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
@@ -36,14 +32,5 @@ public class Content implements Timestamped, SoftRemoved {
     private boolean removed;
 
     @Column
-    private String title;
-    @Column(nullable = false)
-    private Long version;
-    @Column(nullable = false)
-    private ContentStatus contentStatus;
-    @ManyToOne
-    private ContentType contentType;
-
-    @OneToMany
-    private Collection<ContentBody> contentBodies;
+    private String name;
 }
